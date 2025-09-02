@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Premium AI/ML Portfolio Design System - Kiran Andolu
+   Rich, elegant color palette with proper contrast ratios
+   All colors MUST be HSL for consistency
+*/
+
+@layer base {
+  :root {
+    /* Premium Color Palette */
+    --ink-navy: 219 44% 11%;        /* #0B1220 - main background */
+    --charcoal: 220 24% 8%;         /* #0D1117 - surfaces */
+    --ivory-mist: 46 13% 97%;       /* #F8F7F4 - text/neutral */
+    --teal-accent: 173 80% 40%;     /* #14B8A6 - primary */
+    --royal-violet: 263 83% 57%;    /* #7C3AED - secondary */
+    --slate-mute: 215 20% 65%;      /* #64748B - muted text */
+    --amber-glow: 38 92% 50%;       /* #F59E0B - highlights */
+    --success-green: 142 71% 45%;   /* #22C55E - positive states */
+
+    /* Semantic Tokens */
+    --background: var(--ink-navy);
+    --foreground: var(--ivory-mist);
+
+    --card: var(--charcoal);
+    --card-foreground: var(--ivory-mist);
+
+    --popover: var(--charcoal);
+    --popover-foreground: var(--ivory-mist);
+
+    --primary: var(--teal-accent);
+    --primary-foreground: var(--ink-navy);
+
+    --secondary: var(--royal-violet);
+    --secondary-foreground: var(--ivory-mist);
+
+    --muted: var(--charcoal);
+    --muted-foreground: var(--slate-mute);
+
+    --accent: var(--amber-glow);
+    --accent-foreground: var(--ink-navy);
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: var(--ivory-mist);
+
+    --border: 220 24% 15%;
+    --input: 220 24% 15%;
+    --ring: var(--teal-accent);
+
+    --radius: 0.75rem;
+
+    /* Gradients for premium feel */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--teal-accent)), hsl(var(--royal-violet)));
+    --gradient-surface: linear-gradient(135deg, hsl(var(--charcoal)), hsl(219 44% 13%));
+    --gradient-glow: radial-gradient(circle at center, hsl(var(--teal-accent) / 0.2), transparent 70%);
+
+    /* Shadows with color matching */
+    --shadow-glow: 0 0 40px hsl(var(--teal-accent) / 0.3);
+    --shadow-elegant: 0 20px 60px -10px hsl(var(--ink-navy) / 0.5);
+    --shadow-card: 0 8px 32px hsl(var(--ink-navy) / 0.3);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  /* Dark mode inherits the same premium palette - no need for separate dark mode */
+  .dark {
+    /* Same premium palette works for dark theme */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  /* Scroll behavior and accessibility */
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Account for sticky header */
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Premium typography scale */
+  .text-display {
+    @apply text-5xl md:text-7xl font-black tracking-tight;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-hero {
+    @apply text-4xl md:text-6xl font-bold tracking-tight;
+  }
+
+  .text-section {
+    @apply text-3xl md:text-4xl font-bold tracking-tight;
+  }
+
+  /* Glassmorphism utilities */
+  .glass {
+    background: hsl(var(--charcoal) / 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--ivory-mist) / 0.1);
+  }
+
+  .glass-nav {
+    background: hsl(var(--charcoal) / 0.9);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid hsl(var(--ivory-mist) / 0.1);
+  }
+
+  /* Premium glow effects */
+  .glow-primary {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .glow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Animation classes */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--ivory-mist) / 0.1),
+      transparent
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s ease-in-out infinite;
+  }
+
+  /* Custom focus styles */
+  .focus-visible\:outline-primary:focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 20px hsl(var(--teal-accent) / 0.2); }
+  100% { box-shadow: 0 0 40px hsl(var(--teal-accent) / 0.4), 0 0 60px hsl(var(--royal-violet) / 0.2); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes typewriter {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
