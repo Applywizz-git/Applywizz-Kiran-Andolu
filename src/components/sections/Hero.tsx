@@ -85,7 +85,7 @@ export const Hero: React.FC = () => {
         >
           {/* Content Column */}
           <motion.div
-            className="text-center lg:text-left space-y-8 order-2 lg:order-1"
+            className="text-center lg:text-left order-2 lg:order-1"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
